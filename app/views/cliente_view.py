@@ -1,6 +1,6 @@
 from app import app
 
-@app.route("/ola", defaults={'nome': None})
+@app.route("/ola", defaults={'nome': None}, methods={"PUT"})
 @app.route("/ola/<string:nome>")
 def ola(nome):
     if nome:
