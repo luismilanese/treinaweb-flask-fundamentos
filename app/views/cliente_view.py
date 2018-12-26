@@ -35,3 +35,7 @@ def cadastrar_cliente():
             print("Cliente não cadastrado")
 
     return render_template("clientes/form.html", form=form)
+
+@app.route("/listar_clientes", methods=["GET"])
+def listar_clientes():
+    return render_template("clientes/lista_clientes.html")
