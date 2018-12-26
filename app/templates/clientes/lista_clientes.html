@@ -17,15 +17,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>João</td>
-            <td>01/01/1990</td>
-            <td>Programador</td>
-            <td>
-                <a href="#">Editar</a>
-                <a href="#">Remover</a>
-            </td>
-        </tr>
+        {% for i in clientes %}
+            <tr>
+                <td>{{i.nome}}</td>
+                <td>{{i.data_nascimento}}</td>
+                <td>{{i.profissao}}</td>
+                <td>
+                    <a href="#">Editar</a>
+                    <a href="#">Remover</a>
+                </td>
+            </tr>
+        {% endfor %}
     </tbody>
 </table>
 
