@@ -8,7 +8,7 @@
 <body>
 
 <form method="post">
-
+    {{ form.csrf_token }}
     <div class="form-group">
         <label>Nome</label>
         {{ form.nome(class="form-control") }}
@@ -29,6 +29,9 @@
         <label>Sexo</label>
         {{ form.sexo(class="form-control") }}
     </div>
+
+    <button class="btn btn-primary" type="submit">Cadastrar</button>
+
 
 </form>
 
