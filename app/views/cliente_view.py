@@ -5,6 +5,7 @@ from app import db
 
 from app import app
 from app.models import cliente_model
+from app.entidades import cliente
 
 
 # @app.route("/ola", defaults={'nome': None})
@@ -52,14 +53,17 @@ def listar_cliente(id):
 
 @app.route("/editar_cliente/<int:id>", methods=["POST", "GET"])
 def editar_cliente(id):
-    cliente = cliente_model.Cliente.query.filter_by(id=id).first()
-    form = cliente_form.ClienteForm(obj=cliente)
+    cliente_bd = cliente_model.Cliente.query.filter_by(id=id).first()
+    form = cliente_form.ClienteForm(obj=cliente_bd)
     if form.validate_on_submit():
         nome = form.nome.data
         email = form.email.data
         data_nascimento = form.data_nascimento.data
         profissao = form.profissao.data
         sexo = form.sexo.data
+
+        cliente_novo = cliente.Cliente(nome=nome, email=email, data_nascimento=data_nascimento, profissao=profissao
+                                       , sexo=sexo)
 
         cliente.nome = nome
         cliente.email = email
