@@ -75,3 +75,9 @@ def editar_cliente(id):
 
 
     return render_template("clientes/form.html", form=form)
+
+@app.route("/remover_cliente/<int:id>", methods=["GET", "POST"])
+def remover_cliente(id):
+    cliente = cliente_model.Cliente.query.filter_by(id=id).first()
+
+    return render_template("clientes/remover_cliente.html", cliente=cliente)
