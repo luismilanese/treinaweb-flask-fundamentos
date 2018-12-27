@@ -48,3 +48,11 @@ def listar_cliente(id):
     cliente = cliente_model.Cliente.query.filter_by(id=id).first()
 
     return render_template("clientes/lista_cliente.html", cliente=cliente)
+
+
+@app.route("/editar_cliente/<int:id>")
+def editar_cliente(id):
+    cliente = cliente_model.Cliente.query.filter_by(id=id).first()
+    form = cliente_form.ClienteForm(obj=cliente)
+
+    return render_template("clientes/form.html", form=form)
